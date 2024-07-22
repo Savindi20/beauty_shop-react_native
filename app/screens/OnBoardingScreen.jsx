@@ -1,41 +1,33 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { SwiperFlatList } from 'react-native-swiper-flatlist'
+import React from 'react';
+import { Text, Dimensions, StyleSheet, View, Image } from 'react-native';
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
 
-const OnBoardingScreen = () => {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <SwiperFlatList>
-        <ScreenOne />
-        <ScreenTwo />
-        <ScreenThree />
-      </SwiperFlatList>
-    </View>
-  )
-}
+const OnBoardingScreen = () => (
+  <View style={styles.container}>
+    <SwiperFlatList autoplay autoplayDelay={2} autoplayLoop index={2}>
+      <View style={[styles.child]}>
+        <Text style={styles.text}>1</Text>
+        <Image source={require('../assets/screen1.png')}></Image>
+      </View>
+      <View style={[styles.child]}>
+        <Text style={styles.text}>2</Text>
+      </View>
+      <View style={[styles.child]}>
+        <Text style={styles.text}>3</Text>
+      </View>
+      <View style={[styles.child]}>
+        <Text style={styles.text}>4</Text>
+      </View>
+    </SwiperFlatList>
+  </View>
+);
 
-export const ScreenOne = () => {
-  return (
-    <View>
-      <Text> Screen One </Text>
-    </View>
-  )
-}
+const { width } = Dimensions.get('window');
 
-export const ScreenTwo = () => {
-  return (
-    <View>
-      <Text> Screen Two </Text>
-    </View>
-  )
-}
+const styles = StyleSheet.create({
+  container: { flex: 1},
+  child: { width, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.1)' },
+  text: { fontSize: width * 0.5, textAlign: 'center' },
+});
 
-export const ScreenThree = () => {
-  return (
-    <View>
-      <Text> Screen Three </Text>
-    </View>
-  )
-}
-
-export default OnBoardingScreen
+export default OnBoardingScreen;
